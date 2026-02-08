@@ -67,7 +67,7 @@ function initTemplates() {
 
     fs.cpSync(path.join(__dirname, `templates/base`), process.cwd(), {
         recursive: true,
-        focus: true,
+        force: true,
     });
 }
 

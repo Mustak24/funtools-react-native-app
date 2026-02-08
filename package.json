@@ -1,12 +1,12 @@
 {
-  "name": "@funtools/create-react-native-app",
-  "description": "Create a React Native app with preconfigured setup",
-  "version": "1.1.1",
-  "type": "module",
-  "bin": {
-    "create-react-native-app": "index.js"
-  },
-  "dependencies": {
-    "prompts": "^2.4.2"
-  }
+    "name": "@funtools/create-react-native-app",
+    "description": "Create a React Native app with preconfigured setup",
+    "version": "1.1.2",
+    "type": "module",
+    "bin": {
+        "create-react-native-app": "index.js"
+    },
+    "dependencies": {
+        "prompts": "^2.4.2"
+    }
 }
