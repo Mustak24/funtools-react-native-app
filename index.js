@@ -42,8 +42,6 @@ async function getAppName() {
         },
     });
 
-    if (!response.appName) throw Error("❌ App creation cancelled");
-
     appName = response.appName;
 }
 
@@ -65,7 +63,7 @@ function initApp() {
 function initTemplates() {
     console.log("Initializing templates...");
 
-    fs.unlinkSync(`${process.cwd()}/App.tsx`);
+    fs.unlinkSync(path.join(process.cwd(), 'App.tsx'));
 
     fs.cpSync(path.join(__dirname, `templates/base`), process.cwd(), {
         recursive: true,
