@@ -22,6 +22,7 @@ try {
     installDependencies();
 
     console.log("✅ App setup complete");
+    process.exit(0);
 } catch (e) {
     console.error("❌ Failed to create app");
     console.error(error);
@@ -63,6 +64,8 @@ function initApp() {
 
 function initTemplates() {
     console.log("Initializing templates...");
+
+    fs.unlinkSync(`${process.cwd()}/App.tsx`);
 
     fs.cpSync(path.join(__dirname, `templates/base`), process.cwd(), {
         recursive: true,

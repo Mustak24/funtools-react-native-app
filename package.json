@@ -1,7 +1,7 @@
 {
   "name": "@funtools/create-react-native-app",
   "description": "Create a React Native app with preconfigured setup",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "type": "module",
   "bin": {
     "create-react-native-app": "index.js"

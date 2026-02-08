@@ -1,22 +1,17 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
-    "types": [
-      "jest"
-    ],
+    "jsx": "react-native",
+    "types": ["jest"],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "nativewind-env.d.ts"
-, "react-native.config.js"  ],
-  "exclude": [
-    "**/node_modules",
-    "**/Pods"
-  ]
+    "nativewind-env.d.ts",
+    "react-native.config.js"
+  ],
+  "exclude": ["**/node_modules", "**/Pods"]
 }
