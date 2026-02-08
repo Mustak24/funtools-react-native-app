@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { execSync } from "child_process";
 import fs from "fs";
-import { rm, cp } from "fs/promises";
 import prompts from "prompts";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,19 +13,17 @@ let appName = "MyApp";
 
 try {
     console.log("Welcome to @funtools");
-    console.log('Thanks for using @funtools/create-react-native-app@1.1.3');
+    console.log('Thanks for using @funtools/create-react-native-app');
 
     await getAppName();
 
     initApp();
-
-    await initTemplates();
-
+    initTemplates();
     installDependencies();
 
     console.log("✅ App setup complete");
     process.exit(0);
-} catch (e) {
+} catch (error) {
     console.error("❌ Failed to create app");
     console.error(error);
     process.exit(1);
@@ -63,12 +60,12 @@ function initApp() {
 }
 
 
-async function initTemplates() {
+function initTemplates() {
     console.log("Initializing templates...");
 
-    await rm(path.join(process.cwd(), 'App.tsx'), { recursive: true, force: true });
+    fs.unlinkSync(path.join(process.cwd(), 'App.tsx'));
 
-    await cp(path.join(__dirname, `templates/base/files`), process.cwd(), {
+    fs.cpSync(path.join(__dirname, `templates/base/files`), process.cwd(), {
         recursive: true,
         force: true,
     });
