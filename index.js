@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { execSync } from "child_process";
 import fs from "fs";
+import { rm, cp } from "fs/promises";
 import prompts from "prompts";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -13,12 +14,14 @@ let appName = "MyApp";
 
 try {
     console.log("Welcome to @funtools");
+    console.log('Thanks for using @funtools/create-react-native-app@1.1.3');
 
     await getAppName();
 
     initApp();
-    initTemplates();
-    updatePackageJson();
+
+    await initTemplates();
+
     installDependencies();
 
     console.log("✅ App setup complete");
@@ -60,34 +63,36 @@ function initApp() {
 }
 
 
-function initTemplates() {
+async function initTemplates() {
     console.log("Initializing templates...");
 
-    fs.unlinkSync(path.join(process.cwd(), 'App.tsx'));
+    await rm(path.join(process.cwd(), 'App.tsx'), { recursive: true, force: true });
 
-    fs.cpSync(path.join(__dirname, `templates/base`), process.cwd(), {
+    await cp(path.join(__dirname, `templates/base/files`), process.cwd(), {
         recursive: true,
         force: true,
     });
 }
 
 
-function updatePackageJson() {
-    console.log("Updating package.json...");
-
-    fs.writeFileSync(
-        `${process.cwd()}/package.json`,
-        fs
-            .readFileSync(`${process.cwd()}/package.json`, "utf-8")
-            .replaceAll("$AppName", appName),
-    );
-}
-
-
 function installDependencies() {
+    
+    const {dependencies, devDependencies} = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "templates/base/dependencies.json"), "utf-8")
+    );
+    
     console.log("Installing dependencies...");
+    execSync(`npm install ${dependencies.join(" ")}`, {
+        stdio: "inherit",
+    });
 
-    execSync("npm install", {
+    console.log("Installing dev dependencies...");
+    execSync(`npm install -D ${devDependencies.join(" ")}`, {
+        stdio: "inherit",
+    });
+
+    console.log('Remove @react-native/new-app-screen');
+    execSync(`npm uninstall @react-native/new-app-screen`, {
         stdio: "inherit",
     });
 }
