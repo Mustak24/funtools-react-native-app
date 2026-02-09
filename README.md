@@ -1,10 +1,10 @@
 # @funtools/create-react-native-app
 
-![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)
 
-> **⚠️ Version Requirement:** Please use version **1.2.0 or higher** for the best experience and latest features.
+> **⚠️ Version Requirement:** Please use version **2.0.0 or higher** for the best experience and latest features.
 
 A professional CLI tool to quickly scaffold a production-ready React Native app with a modern, preconfigured tech stack. No more time wasted on boilerplate setup—just run one command and start building your app!
 
@@ -47,7 +47,7 @@ You can use this tool without installing it globally:
 npx @funtools/create-react-native-app@latest
 ```
 
-> **Note:** Using `@latest` ensures you always get version 1.2.0 or higher.
+> **Note:** Using `@latest` ensures you always get version 2.0.0 or higher.
 
 ### Option 2: Global Installation
 
@@ -301,7 +301,7 @@ rm -rf $TMPDIR/haste-*
 
 **If you're using an older version:**
 
-Ensure you're using version **1.2.0 or higher**:
+Ensure you're using version **2.0.0 or higher**:
 
 ```bash
 # Check installed version
@@ -364,4 +364,4 @@ Having issues or questions?
 
 **Happy coding! 🚀**
 
-_Made with @funtools/create-react-native-app v1.2.0+_
+_Made with @funtools/create-react-native-app v2.0.0+_

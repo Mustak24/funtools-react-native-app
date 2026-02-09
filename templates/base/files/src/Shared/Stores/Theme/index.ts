@@ -1,6 +1,6 @@
 import { Theme } from './types';
 import { _colors, _theme } from './constance';
-import { createStore } from '@fun-tools/store';
+import { createStore } from '@funtools/store';
 
 const { useStore, useHandlers } = createStore({
   states: {
