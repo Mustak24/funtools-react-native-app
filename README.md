@@ -338,7 +338,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 Having issues or questions?
 
-- 🐛 **Report bugs:** Open an issue on the [GitHub repository](https://github.com/your-username/funtools-react-native-app)
+- 🐛 **Report bugs:** Open an issue on the [GitHub repository](https://github.com/Mustak24/funtools-react-native-app)
 - 💡 **Feature requests:** Submit an issue with the `enhancement` label
 - 📧 **General questions:** Open a discussion on GitHub
 

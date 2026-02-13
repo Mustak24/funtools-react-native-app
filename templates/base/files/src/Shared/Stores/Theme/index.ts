@@ -1,4 +1,3 @@
-import { Theme } from './types';
 import { _colors, _theme } from './constance';
 import { createStore } from '@funtools/store';
 
