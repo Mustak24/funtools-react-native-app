@@ -1,10 +1,10 @@
 # @funtools/create-react-native-app
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)
 
-> **⚠️ Version Requirement:** Please use version **2.0.0 or higher** for the best experience and latest features.
+> **⚠️ Version Requirement:** Please use version **2.0.3 or higher** for the best experience and latest features.
 
 A professional CLI tool to quickly scaffold a production-ready React Native app with a modern, preconfigured tech stack. No more time wasted on boilerplate setup—just run one command and start building your app!
 
@@ -14,6 +14,7 @@ A professional CLI tool to quickly scaffold a production-ready React Native app 
 
 - 🚀 **Quick Setup** - Creates a fully configured React Native app in seconds
 - 📱 **Modern Stack** - Built on the latest React Native and React versions
+- 🔢 **Version Choice** - Use latest (auto) or specify a React Native version
 - 🎨 **Styled Out of the Box** - Preconfigured with NativeWind (Tailwind CSS for React Native)
 - 🧭 **Navigation Ready** - React Navigation already integrated and configured
 - 📦 **State Management** - Includes `@funtools/store` for efficient state handling
@@ -22,6 +23,7 @@ A professional CLI tool to quickly scaffold a production-ready React Native app 
 - 🧪 **Testing Setup** - Jest configured and ready for unit tests
 - 🔧 **Code Quality Tools** - ESLint and Prettier preconfigured
 - 📁 **Module Resolution** - Babel module resolver for clean imports
+- 📂 **Git Ready** - Initializes a Git repo with an initial commit
 
 ---
 
@@ -33,7 +35,7 @@ Before you begin, ensure you have the following installed:
 - **npm** or **yarn** (comes with Node.js)
 - **Android Studio** (for Android development)
 - **Xcode** >= 12 (for iOS development on macOS)
-- **React Native CLI** (installed automatically)
+- **React Native CLI** (via `@react-native-community/cli` — used automatically when you run the tool)
 
 ---
 
@@ -47,7 +49,7 @@ You can use this tool without installing it globally:
 npx @funtools/create-react-native-app@latest
 ```
 
-> **Note:** Using `@latest` ensures you always get version 2.0.0 or higher.
+> **Note:** Using `@latest` ensures you always get version 2.0.3 or higher.
 
 ### Option 2: Global Installation
 
@@ -75,7 +77,7 @@ Simply run the command and follow the interactive prompts:
 npx @funtools/create-react-native-app@latest
 ```
 
-You'll be prompted to enter your app name.
+You'll be prompted to enter your app name and optionally your React Native version.
 
 ### App Name Requirements
 
@@ -86,6 +88,13 @@ Your app name must follow these rules:
 - ❌ Examples of invalid names: `my-app`, `my_app`, `myApp`, `123App`
 - ✅ Examples of valid names: `MyApp`, `MyAwesomeApp`, `ReactApp123`
 
+### App Version (React Native)
+
+When prompted **"What is your app version?"**:
+
+- **`auto`** (default) – Use the latest React Native version recommended by the CLI.
+- **Specific version** – Enter a version (e.g. `0.76.0`) to create the app with that React Native version.
+
 ### Example Session
 
 ```bash
@@ -93,11 +102,13 @@ $ npx @funtools/create-react-native-app@latest
 Welcome to @funtools
 Thanks for using @funtools/create-react-native-app
 ? What is your app name? › MyAwesomeApp
+? What is your app version? › auto
 🚀 Initializing React Native app: MyAwesomeApp
 Initializing templates...
 Installing dependencies...
 Installing dev dependencies...
-Remove @react-native/new-app-screen
+Removing @react-native/new-app-screen...
+Initializing git...
 ✅ App setup complete
 ```
 
@@ -191,7 +202,7 @@ MyAwesomeApp/
 ├── ios/                     # iOS native code and configuration
 ├── src/                     # Your app source code (components, screens, etc.)
 ├── node_modules/            # Installed dependencies
-├── .git/                    # Git repository
+├── .git/                    # Git repository (initialized with initial commit)
 ├── .gitignore               # Git ignore configuration
 ├── App.tsx                  # Main app component (removed by @funtools)
 ├── index.js                 # Entry point
@@ -301,7 +312,7 @@ rm -rf $TMPDIR/haste-*
 
 **If you're using an older version:**
 
-Ensure you're using version **2.0.0 or higher**:
+Ensure you're using version **2.0.3 or higher**:
 
 ```bash
 # Check installed version
@@ -364,4 +375,4 @@ Having issues or questions?
 
 **Happy coding! 🚀**
 
-_Made with @funtools/create-react-native-app v2.0.0+_
+_Made with @funtools/create-react-native-app v2.0.3+_

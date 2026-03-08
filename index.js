@@ -10,12 +10,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 let appName = "MyApp";
+let appRNVersion = 'auto';
 
 try {
     console.log("Welcome to @funtools");
     console.log("Thanks for using @funtools/create-react-native-app");
 
-    await getAppName();
+    await getAppInfo();
     await initApp();
 
     process.chdir(appName);
@@ -33,10 +34,10 @@ try {
 }
 
 
-async function getAppName() {
-    const response = await prompts({
+async function getAppInfo() {
+    const {_appName} = await prompts({
         type: "text",
-        name: "appName",
+        name: "_appName",
         message: "What is your app name?",
         initial: appName,
         validate: (value) => {
@@ -45,7 +46,17 @@ async function getAppName() {
         },
     });
 
-    appName = response.appName;
+    appName = _appName;
+    
+    
+    const {_appRNVersion} = await prompts({
+        type: "text",
+        name: "_appRNVersion",
+        message: "What is your app version?",
+        initial: 'auto'
+    });
+
+    appRNVersion = _appRNVersion ?? appRNVersion;
 }
 
 
@@ -55,7 +66,14 @@ async function initApp() {
 
         const stop = useLoading("Initializing React Native app");
 
-        exec(`npx @react-native-community/cli@latest init ${appName} --skip-install`, {
+        exec([
+            'npx',
+            '@react-native-community/cli@latest',
+            'init',
+            appName,
+            '--skip-install',
+            appRNVersion !== 'auto' ? `--version ${appRNVersion}` : '',
+        ].join(' '), {
             stdio: "ignore",
         }, (error) => error ? reject(error) : resolve(stop("✅ React Native app initialized")) );
     });
